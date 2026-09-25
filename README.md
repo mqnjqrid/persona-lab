@@ -31,4 +31,17 @@ not a finished website. There is no separate application mock.
 
 - This app has no real browser or model integration.
 - The sample journey and rationale are simulated; they are not human research.
-- GitHub Pages deployment is intentionally not configured. Creating it is a participant task.
+- GitHub Pages publishes this static prototype; it does not add real browser or model integrations.
+
+## GitHub Pages deployment
+
+After the deployment PR is merged, the paper mock is available at
+[https://mqnjqrid.github.io/persona-lab/](https://mqnjqrid.github.io/persona-lab/).
+Every push to `main` runs the GitHub Pages workflow: install locked dependencies,
+run tests, build with Vite, verify the built paper mock in Chromium, and deploy
+`dist/`. Pull requests run the same checks without deploying.
+
+Repository **Settings → Pages → Source** must be **GitHub Actions**.
+The production base path is `/persona-lab/`; local development remains at `/`.
+To reproduce deployment checks locally, run `npm ci`, `npm test`, `npm run build`,
+`npx playwright install chromium`, and `npm run test:pages`.
